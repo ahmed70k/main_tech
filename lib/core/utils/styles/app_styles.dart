@@ -181,7 +181,7 @@ class AppStyles {
 
   // Logout button text
   static const TextStyle logoutButtonStyle = TextStyle(
-    fontSize: 18,
+    fontSize: 14,
     fontWeight: FontWeight.w600,
     color: AppColors.textRed,
   );
