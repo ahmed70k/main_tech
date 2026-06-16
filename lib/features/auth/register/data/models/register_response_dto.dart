@@ -1,6 +1,7 @@
 // To parse this JSON data, do
 //
 //     final registerResponseDto = registerResponseDtoFromJson(jsonString);
+import 'package:main_tech/core/api/api_constans/api_constant.dart';
 import '../../domain/entities/register_response_entitiy.dart';
 
 class RegisterResponseDto extends RegisterResponseEntity {
@@ -45,7 +46,9 @@ class UserResponseDTO extends UserResponseEntity {
         email: json["email"],
         address: json["address"],
         phone: json["phone"],
-        profileImage: json["profile_image"],
+        profileImage: json["profile_image"] == null
+            ? null
+            : ApiConstant.resolveStorageUrl(json["profile_image"] as String),
         role: json["role"],
         updatedAt: json["updated_at"] == null
             ? null

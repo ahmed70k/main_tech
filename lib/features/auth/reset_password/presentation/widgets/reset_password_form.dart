@@ -87,7 +87,7 @@ class _ResetPasswordFormState extends State<ResetPasswordForm> {
                     return "Please enter your password";
                   }
                   if (!AppRegex.passwordPattern.hasMatch(textInput)) {
-                    return "Password must contain at least one letter and one number";
+                    return "Password must be at least 6 characters";
                   }
                   return null;
                 },

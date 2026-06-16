@@ -19,18 +19,10 @@ class RegisterForm extends StatefulWidget {
 }
 
 class _RegisterFormState extends State<RegisterForm> {
-  final TextEditingController fnameController = TextEditingController(
-    text: "ahmed",
-  );
-  final TextEditingController emailController = TextEditingController(
-    text: "ahmed00@gmail.com",
-  );
-  final TextEditingController passwordController = TextEditingController(
-    text: "Aa123456",
-  );
-  final TextEditingController phoneController = TextEditingController(
-    text: "01028765433",
-  );
+  final TextEditingController fnameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   bool isPasswordObscured = true;
 
@@ -138,11 +130,8 @@ class _RegisterFormState extends State<RegisterForm> {
                   if (textInput == null || textInput.isEmpty) {
                     return "Please enter your password";
                   }
-                  if (textInput.length < 6) {
-                    return "Password must be at least 6 characters";
-                  }
                   if (!AppRegex.passwordPattern.hasMatch(textInput)) {
-                    return "Password must contain at least one letter and one number";
+                    return "Password must be at least 6 characters";
                   }
                   return null;
                 },

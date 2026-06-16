@@ -23,14 +23,24 @@ class LoginScreen extends StatelessWidget {
         listener: (BuildContext context, state) async {
           if (state is LoginLoadingState) {
             AppDialogs.showLoading(context);
-          } else if (state is LoginSuccessState) {
+          }
+          else if (state is LoginSuccessState) {
+            print("success: ${state.loginResponseEntity.message}");
             AppDialogs.hideLoading(context);
             await AppDialogs.showSuccess(
               context,
               message: state.loginResponseEntity.message ?? "Login successful!",
             );
-            // Navigate to register or root for now since there's no home page yet.
-            Navigator.pushNamed(context, AppRoutes.register);
+            final role =
+                state.loginResponseEntity.data?.user?.role?.toLowerCase();
+            final route = role == 'admin'
+                ? AppRoutes.adminLayout
+                : AppRoutes.userLayout;
+            Navigator.pushNamedAndRemoveUntil(
+              context,
+              route,
+              (route) => false,
+            );
           } else if (state is LoginErrorState) {
             print("error: ${state.error}");
             AppDialogs.hideLoading(context);

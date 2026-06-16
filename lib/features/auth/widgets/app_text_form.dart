@@ -4,7 +4,7 @@ import 'package:main_tech/core/utils/styles/app_styles.dart';
 
 class AppTextForm extends StatelessWidget {
   final Widget? prefixIcon;
-  //final TextStyle? hintStyle;
+  final int? maxLines;
   final Widget? suffixIcon;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
@@ -12,6 +12,7 @@ class AppTextForm extends StatelessWidget {
   final bool obscureText;
   const AppTextForm({
     super.key,
+    this.maxLines ,
     this.prefixIcon,
     this.controller,
     this.validator,
@@ -22,6 +23,7 @@ class AppTextForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      maxLines: obscureText ? 1 : maxLines,
       style: AppStyles.inputLabelStyle,
       cursorColor: AppColors.textSecondary,
       cursorHeight: 18,

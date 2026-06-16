@@ -92,11 +92,8 @@ class _LoginFormState extends State<LoginForm> {
                   if (textInput == null || textInput.isEmpty) {
                     return "Please enter your password";
                   }
-                  if (textInput.length < 6) {
-                    return "Password must be at least 6 characters";
-                  }
                   if (!AppRegex.passwordPattern.hasMatch(textInput)) {
-                    return "Password must contain at least one letter and one number";
+                    return "Password must be at least 6 characters";
                   }
                   return null;
                 },
